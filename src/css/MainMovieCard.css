@@ -1,0 +1,8 @@
+.movie_title {
+  white-space: nowrap; /* ไม่พักบรรทัดข้อความ */
+  overflow: hidden; /* ซ่อนส่วนข้อความที่เกิน */
+  text-overflow: ellipsis;
+}
+.card-img{
+    height: 450px;
+}

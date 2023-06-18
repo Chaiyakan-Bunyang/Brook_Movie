@@ -1,0 +1,18 @@
+.Nav-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+.card-img{
+    height: 300px;
+}
+.Tab_btn{
+    transition: 0.5s;
+}
+.Tab_btn:hover{
+    transform: scale(1.03);
+}
+.active-tab {
+    background-color: red;
+  }

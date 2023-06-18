@@ -1,0 +1,21 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+
+.Nav-link{
+    color: white;
+}
+.Navbar{
+  font-family: 'Oswald', sans-serif;
+}
+.white-text{
+    color: #fff;
+}
+.custom-dropdown .dropdown-toggle {
+    color: white !important;
+  }
+  .Nav-Brand.mr-3 {
+    margin-right: 4rem !important;
+  }
+.custom-toggle .navbar-toggler-icon {
+    background-color: white !important;
+  }
