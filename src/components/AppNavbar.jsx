@@ -4,11 +4,15 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import "../css/AppNavbar.css"
 import {BrowserRouter,Routes,Route, useLocation} from 'react-router-dom'
-
+import Home from './Home';
+import Login from './Login';
+import SignUp from './SignUp';
+import { useState } from "react";
 
 
 function AppNavbar() {
 
+ 
 
   return (
     <header className="p-3 text-white Navbar" style={{background:'#121212'}}>
@@ -19,8 +23,8 @@ function AppNavbar() {
         </a>
 
         <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ms-5">
-          <li><a href="#" className="nav-link px-3 text-white">Home</a></li>
-          <li><a href="#" className="nav-link px-3 text-white">Features</a></li>
+          <li><a href="/" className="nav-link px-3 text-white">Home</a></li>
+          <li><a href="movies" className="nav-link px-3 text-white">Movies</a></li>
           <li><a href="#" className="nav-link px-3 text-white">Pricing</a></li>
           <li><a href="#" className="nav-link px-3 text-white">FAQs</a></li>
           <li><a href="#" className="nav-link px-3 text-white">About</a></li>

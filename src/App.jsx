@@ -12,16 +12,16 @@ import Home from "./components/Home";
 import CarouselsMain from "./components/CarouselsMain";
 import MainContainer from "./components/MainContainer";
 import Footer from "./components/footer";
+import AllMovie from "./components/AllMovie";
 
 function App() {
   const [showNavbar, setShowNavbar] = useState(true);
   return (
     <div>
-      <header>
         {showNavbar && <AppNavbar />}
         <BrowserRouter>
           <Routes>
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home/>} />
             <Route
               path="/login"
               element={<Login setShowNavbar={setShowNavbar} />}
@@ -30,19 +30,16 @@ function App() {
               path="/signup"
               element={<SignUp setShowNavbar={setShowNavbar} />}
             />
+            <Route 
+              path="/movies"
+              element={<AllMovie/>}
+            />
           </Routes>
         </BrowserRouter>
-      </header>
-
-      <main>
-        <CarouselsMain />
-        <MainContainer />
-      </main>
-
-      <footer>
         <Footer/>
-      </footer>
     </div>
+
+    
   );
 }
 

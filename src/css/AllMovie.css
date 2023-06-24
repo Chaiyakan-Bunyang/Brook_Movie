@@ -1,0 +1,6 @@
+.sidebar_container{
+    display: flex;
+    background: red;
+    flex-direction: column;
+    width: 100%;
+}

@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import MainMovieCard from "./MainMovieCard";
 import { Button } from "react-bootstrap";
 
+
 function MainContainer() {
   const API_KEY = 'dff713f12ffdfc4081f559aa479cfbda'
   const API_URL = 'https://api.themoviedb.org/3/'
@@ -23,7 +24,7 @@ function MainContainer() {
       setMovies(results)
   }
   const fetchMovieUpcoming = async ()=>{
-    const {data:{results}} = await axios.get(`${API_URL}/movie/upcoming`,{
+    const {data:{results}} = await axios.get(`${API_URL}/movie/popular`,{
       params:{
         api_key: API_KEY
       }
@@ -34,6 +35,8 @@ function MainContainer() {
   useEffect(()=>{
     fetchMovie()
   },[])
+
+  console.log(movies);
 
   const renderMovies = () =>(
     movies.map(movie=>(
@@ -66,11 +69,11 @@ function MainContainer() {
             >
               <Tab eventKey="ongoing" title={<h5>กำลังฉาย</h5>} className="Tab_btn">
               </Tab>
-              <Tab eventKey="comingsoon" title={<h5>โปรแกรมหน้า</h5>} onClick={fetchMovieUpcoming}>
+              <Tab eventKey="comingsoon" title={<h5>ยอดนิยม</h5>} onClick={fetchMovieUpcoming}>
               </Tab>
             </Tabs>
           </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-2">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-2">
           {renderMovies()}
           </div>
         </div>

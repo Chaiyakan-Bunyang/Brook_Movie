@@ -4,8 +4,9 @@
    border-radius: 100%;
  }
  .Carousel_IMG{
-   width: 100%;
     object-fit: cover;
     object-position: center;
-    height: 30rem;
+    max-height: 30rem;
+    width: 100%;
  }
+

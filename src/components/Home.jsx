@@ -1,9 +1,13 @@
 import React from 'react'
+import CarouselsMain from './CarouselsMain'
+import MainContainer from './MainContainer'
+import Footer from './footer'
 
 const Home = () => {
   return (
     <div>
-      <h2>Home</h2>
+      <CarouselsMain/>
+      <MainContainer/>
     </div>
   )
 }

@@ -38,7 +38,6 @@ export default function CarouselsMain() {
           <Button  variant="warning" size="lg">Buy Ticket</Button>
           </Carousel.Caption>
         </Carousel.Item>
-
       </Carousel>
     </Container>
   );
