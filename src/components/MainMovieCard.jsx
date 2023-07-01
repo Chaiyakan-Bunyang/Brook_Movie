@@ -9,11 +9,12 @@ export default function MainMovieCard(props){
               <div class="card shadow-sm">
                 <img
                   src={IMAGE_PATH+movie.poster_path}
+                  style={{height:'300px'}}
                   alt=""
                   className="card-img"
                 />
                 <div class="card-body Card_Body">
-                  <h4 class="card-title movie_title">{movie.title}</h4>
+                  <h6 class="card-title movie_title"><strong>{movie.title}</strong></h6>
                   <p class="card-text">
                     {movie.release_date}
                   </p>

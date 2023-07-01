@@ -8,18 +8,24 @@ import axios from "axios";
 import AllMovieCard from "./AllMovieCard";
 import Pagination from "react-bootstrap/Pagination";
 import { PaginationControl } from "react-bootstrap-pagination-control";
+import Form from "react-bootstrap/Form";
 
 export default function AllMovie() {
   const [page, setPage] = useState(1);
-  const [numberOFpage, setNumberOFpage] = useState();
+  const [language,setLanguage] = useState('');
+  const [year,setYear] = useState('');
+  const [sort,setSort] = useState("popularity.desc");
   const [allmovie, setAllmovie] = useState([]);
+  const [adult,setAdult] = useState(false);
   const API_KEY = "dff713f12ffdfc4081f559aa479cfbda";
+  
+  console.log(adult);
 
   const fetchAPI = async () => {
     const response = await axios.get(
-      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${parseInt(
+      `https://api.themoviedb.org/3/discover/movie?include_adult=${adult}&include_video=false&with_original_language=${language}&page=${parseInt(
         page
-      )}&primary_release_year=2015&sort_by=popularity.desc`,
+      )}&primary_release_year=${year}&sort_by=${sort}`,
       {
         headers: {
           accept: "application/json",
@@ -30,41 +36,71 @@ export default function AllMovie() {
       }
     );
     setAllmovie(response.data.results);
-    setNumberOFpage(100);
     console.log(response.data);
   };
   useEffect(() => {
     fetchAPI();
-  }, [page]);
+  }, [page,sort,language,adult]);
   const renderallmovie = () =>
     allmovie.map((movie) => <AllMovieCard key={movie.id} movie={movie} />);
-  console.log(allmovie);
+ 
 
   const handlePageChange = (page) => {
     setPage(page);
     window.scroll(0, 0);
   };
-  console.log(page);
+  const sort_movie = (val)=> {
+      setSort(val.target.value)
+  }
+  console.log(language);
+  const filter_handle = ()=>{
 
+  }
   return (
     <div className="mt-2">
       <Container>
         <div className="d-flex justify-content-center">
-          <div className="w-100 me-3 d-none d-sm-none d-md-none d-xl-block">
-            <ListGroup defaultActiveKey="#link1">
-              <ListGroup.Item
-                action
-                href="#link1"
-                className="bg-dark border-0 text-white"
-              >
-                <h5 className="text-center">ปีที่ฉาย</h5>
+          <div className="me-3 d-none d-sm-none d-md-none d-xl-block">
+            <ListGroup defaultActiveKey="#link1" className="sort-container">
+              <ListGroup.Item className="bg-dark border-0 text-white">
+                <h5 className="text-center">ค้นหาจาก</h5>
               </ListGroup.Item>
-              <ListGroup.Item action href="#link2" disabled></ListGroup.Item>
-              <ListGroup.Item actionsa>This one is a button</ListGroup.Item>
+              <ListGroup.Item>
+                <Form.Select aria-label="Default select example" onChange={(e)=>sort_movie(e)} defaultValue="popularity.desc">
+                  <option value="popularity.desc">หนังยอดนิยม</option>
+                  <option value="vote_average.desc">หนังคะแนนดี</option>
+                  <option value="primary_release_date.asc">หนังเก่าที่สุด</option>
+                </Form.Select>
+              </ListGroup.Item>
+            </ListGroup>
+
+            <ListGroup defaultActiveKey="#link1" className="mt-3">
+              <ListGroup.Item className="bg-dark border-0 text-white">
+                <h5 className="text-center">หมวดหมู่</h5>
+              </ListGroup.Item>
+              <ListGroup.Item action href="#en" value="en-US"  onClick={()=>{setLanguage('en'),setPage(1)}}>
+                หนังฝรั่ง
+              </ListGroup.Item>
+              <ListGroup.Item action href="#th"  onClick={()=>{setLanguage('th'),setPage(1)}} >
+                หนังไทย
+              </ListGroup.Item>
+              <ListGroup.Item action href="#ko"  onClick={()=>{setLanguage('ko'),setPage(1)}} >
+                หนังเกาหลี
+              </ListGroup.Item>
+              <ListGroup.Item action href="#ja" onClick={()=>{setLanguage('ja'),setPage(1)}}>
+                หนังญี่ปุ่น
+              </ListGroup.Item>
+              <ListGroup.Item action href="#cn" onClick={()=>{setLanguage('cn'),setPage(1)}}>
+                หนังจีน
+              </ListGroup.Item>
+              <ListGroup.Item action href="#hi" onClick={()=>{setLanguage('hi'),setPage(1)}}>
+                หนังอินเดีย
+              </ListGroup.Item>
+                      
             </ListGroup>
           </div>
 
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-3">
             {renderallmovie()}
           </div>
         </div>

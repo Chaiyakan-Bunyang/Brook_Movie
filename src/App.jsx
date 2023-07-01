@@ -11,17 +11,22 @@ import SignUp from "./components/SignUp";
 import Home from "./components/Home";
 import CarouselsMain from "./components/CarouselsMain";
 import MainContainer from "./components/MainContainer";
-import Footer from "./components/footer";
+import Footer from "./components/Footer";
 import AllMovie from "./components/AllMovie";
+import React from 'react';
+export const AuthContext_APP = React.createContext();
 
 function App() {
+  const email = "leonadorbill"
   const [showNavbar, setShowNavbar] = useState(true);
   return (
     <div>
-        {showNavbar && <AppNavbar />}
+        {showNavbar && <AppNavbar/>
+        }
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home/>} />
+            <Route path="/home" element={<Home/>} />
             <Route
               path="/login"
               element={<Login setShowNavbar={setShowNavbar} />}

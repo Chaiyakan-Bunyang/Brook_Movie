@@ -1,0 +1,10 @@
+.movie_titles {
+    overflow: hidden; /* ซ่อนส่วนข้อความที่เกิน */
+  }
+.card{
+  height: 30rem;
+}
+.sort-container{
+  width: 15rem;
+}
+

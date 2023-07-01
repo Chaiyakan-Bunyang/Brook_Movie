@@ -19,3 +19,24 @@
 .custom-toggle .navbar-toggler-icon {
     background-color: white !important;
   }
+  .user_icon:hover{
+    color: black;
+  }
+  .dropdown-toggle::after {
+    display: none !important; 
+  }
+  .dropdown{
+    transition: 0.9s;
+  }
+  .dropdown:hover{
+    border: solid 1px #fff;
+    transition: 0.9s;
+  }
+  .line{
+    border: 0.5px solid rgb(244, 244, 244);
+    margin-top: -10px;
+  }
+  .d_header_email{
+    margin-top: -5px;
+    font-size: 12px;
+  }
