@@ -13,9 +13,6 @@ export default function CarouselsMain() {
             src="/IMG/Carousels_IMG1.jpg"
             alt="First Slide"
           />
-          <Carousel.Caption className="Carousel_Caption">
-            <Button  variant="warning" size="lg">Buy Ticket</Button>
-          </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img
@@ -23,9 +20,6 @@ export default function CarouselsMain() {
             src="/IMG/Carousels_IMG2.jpg"
             alt="Second slide"
           />
-          <Carousel.Caption>
-          <Button  variant="warning" size="lg">Buy Ticket</Button>
-          </Carousel.Caption>
         </Carousel.Item>
 
         <Carousel.Item>
@@ -34,9 +28,6 @@ export default function CarouselsMain() {
             src="/IMG/Carousels_IMG3.jpg"
             alt="Third slide"
           /> 
-          <Carousel.Caption>
-          <Button  variant="warning" size="lg">Buy Ticket</Button>
-          </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
     </Container>

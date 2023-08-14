@@ -6,12 +6,18 @@ import { InputGroup } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import axios from "axios";
+import Modal from 'react-bootstrap/Modal';
+import Spinner from 'react-bootstrap/Spinner';
 function Login(props) {
   const { setShowNavbar } = props;
   setShowNavbar(false);
 
   const [showpassword,setShowpassword] = useState(false)
+  const [show, setShow] = useState(false);
+  const [show_error,setShow_error] = useState(false)
 
+  const handleClose = () => setShow_error(false);
+ 
   const handleSubmit = (e)=>{
     e.preventDefault();
     const user_email = e.target.elements.email.value;
@@ -19,7 +25,7 @@ function Login(props) {
     
     const jsonData = {email:user_email,password:user_password}
 
-    fetch(`http://localhost:3333/login`,{
+    fetch(`http://localhost:2000/login`,{
       method:'POST',
       headers:{
         'Content-Type': 'application/json'
@@ -30,26 +36,63 @@ function Login(props) {
     .then(data=>{
      if(data.status =='ok'){
       localStorage.setItem('token',data.token)
-      window.location = '/'
-      alert('login sucess')
+      setShow(true)
+      setTimeout(()=>{
+        window.location = '/'
+      }, 2000)
       console.log('success',data);
      }
      else{
-      alert('login fail')
+      setShow_error(true)
      }
     })
     .catch((error)=>{
       console.log('error',error);
     });
   }
-
   
   return (
-    <div className="login template d-flex justify-content-center align-items-center 100-w vh-100 bg-light">
+  <div>
+     <Modal
+        show={show}
+        backdrop="static"
+        keyboard={false}
+      >
+         <Modal.Header>
+          <Modal.Title>กำลังเข้าสู่ระบบ</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h5>กรุณารอซักครู่</h5>
+        <Spinner animation="border" role="status" variant="primary">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>
+        </Modal.Body>
+       
+      </Modal>
+
+      <Modal
+        show={show_error}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>เข้าสู่ระบบไม่สำเร็จ</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+         ไม่พบข้อมูลผู้ใช้ในระบบ กรุณาระบุ อีเมล หรือ รหัสผ่านให้ถูกต้อง
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleClose}>
+            ปิด
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    <div className="login template d-flex flex-column justify-content-center align-items-center 100-w vh-100 bg-light">
       <Card style={{ width: '30rem',height:'30rem',padding:'30px'}} >
         <Card.Body>
         <form action="submit" onSubmit={handleSubmit}>
-          <h3 className="text-center mb-4">Login</h3>
+          <h3 className="text-center mb-4">เข้าสู่ระบบ</h3>
           <div className="mb-3">
             <FloatingLabel
               controlId="floatingInput"
@@ -76,21 +119,24 @@ function Login(props) {
               id="check"
             />
             <label htmlFor="check" className="custom-input-label ms-1">
-              Remember me
+              จำรหัสผ่าน
             </label>
           </div>
           <div className="d-grid mb-3">
             <button className="btn btn-primary" type="submit">Sign in</button>
           </div>
           <p className="text-right">
-            Forgot <a href="">Password?</a>
-            <a href="">Sign Up</a>
+            Forgot <a href="">ลืมรหัสผ่าน</a>
+            <a href="">เข้าสู่ระบบ</a>
           </p>
         </form>
         </Card.Body>
         
       </Card>
     </div>
+
+  </div>
+    
   );
 }
 
