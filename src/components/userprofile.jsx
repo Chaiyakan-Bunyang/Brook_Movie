@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 export default function Userprofile(props) {
     const {id} = props
     const [userData,setUserData] = useState("")
-
+    console.log("Hello World");
     const fetchUserprofile = async ()=>{
         const res = await axios.get(`http://localhost:2000/profile/${id}`)
        setUserData(res.data[0])
