@@ -1,7 +1,6 @@
 import React, { useEffect, useReducer, useState } from "react";
 import CarouselsMain from "./CarouselsMain";
 import MainContainer from "./MainContainer";
-import Footer from "./footer";
 import Context from "./Context";
 import AppNavbar from "./AppNavbar";
 

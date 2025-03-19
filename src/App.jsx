@@ -66,7 +66,6 @@ function App() {
             <Route path="/profile/editprofile" element={<Profile id={id}/>} />
           </Routes>
         </BrowserRouter>
-        <Footer />
       </div>
   );
 }
